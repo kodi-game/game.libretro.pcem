@@ -13,8 +13,6 @@
 		<extensions></extensions>
 		<supports_vfs>true</supports_vfs>
 		<supports_standalone>true</supports_standalone>
-		<supports_keyboard>true</supports_keyboard>
-		<supports_mouse>true</supports_mouse>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">PC (PCem) v12 alpha</summary>
