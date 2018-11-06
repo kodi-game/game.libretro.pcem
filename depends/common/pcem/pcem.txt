@@ -1,1 +1,1 @@
-pcem https://github.com/libretro/libretro-pcem master
+pcem https://github.com/libretro/libretro-pcem/archive/1955c2127990cfdf4c594b35b466e8503d626fa7.zip
