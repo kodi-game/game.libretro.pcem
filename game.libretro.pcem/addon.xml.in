@@ -2,7 +2,7 @@
 <addon id="game.libretro.pcem"
 		name="PC (PCem)"
 		version="12.0.0.4"
-		provider-name="Libretro">
+		provider-name="PCem Team">
 	<requires>
 		<import addon="game.libretro" version="1.0.0"/>
 		<import addon="game.controller.keyboard" version="1.0.0"/>
