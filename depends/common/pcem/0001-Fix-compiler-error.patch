@@ -1,0 +1,52 @@
+From 850782db5152a3b59aab207b69c4efced3b2f111 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Sat, 22 May 2021 17:10:06 -0700
+Subject: [PATCH] Fix compiler error
+
+Error was:
+
+  dosbox/dbopl.cc: In function 'void DBOPL::InitTables()':
+
+  dosbox/dbopl.cc:1440:71: error: cast from 'DBOPL::Channel*' to 'long unsigned int' loses precision [-fpermissive]
+     Bitu blah = reinterpret_cast<unsigned long>( &(chip->chan[ index ]) );
+                                                                         ^
+  dosbox/dbopl.cc:1455:67: error: cast from 'DBOPL::Operator*' to 'long unsigned int' loses precision [-fpermissive]
+     Bitu blah = reinterpret_cast<unsigned long>( &(chan->op[opNum]) );
+                                                                   ^
+---
+ src/dosbox/dbopl.cc | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/dosbox/dbopl.cc b/src/dosbox/dbopl.cc
+index fe525ab..e8662ac 100644
+--- a/src/dosbox/dbopl.cc
++++ b/src/dosbox/dbopl.cc
+@@ -35,6 +35,7 @@
+ 
+ 
+ #include <math.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
+ //#include "dosbox.h"
+@@ -1437,7 +1438,7 @@ void InitTables( void ) {
+ 		//Add back the bits for highest ones
+ 		if ( i >= 16 )
+ 			index += 9;
+-		Bitu blah = reinterpret_cast<unsigned long>( &(chip->chan[ index ]) );
++		Bitu blah = reinterpret_cast<uintptr_t>( &(chip->chan[ index ]) );
+ 		ChanOffsetTable[i] = blah;
+ 	}
+ 	//Same for operators
+@@ -1452,7 +1453,7 @@ void InitTables( void ) {
+ 			chNum += 16 - 12;
+ 		Bitu opNum = ( i % 8 ) / 3;
+ 		DBOPL::Channel* chan = 0;
+-		Bitu blah = reinterpret_cast<unsigned long>( &(chan->op[opNum]) );
++		Bitu blah = reinterpret_cast<uintptr_t>( &(chan->op[opNum]) );
+ 		OpOffsetTable[i] = ChanOffsetTable[ chNum ] + blah;
+ 	}
+ #if 0
+-- 
+2.30.2
+
