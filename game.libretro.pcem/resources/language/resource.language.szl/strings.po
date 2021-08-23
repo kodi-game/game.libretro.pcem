@@ -16,6 +16,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
+msgctxt "Addon Summary"
+msgid "PC (PCem) v12 alpha"
+msgstr ""
+
+msgctxt "Addon Description"
+msgid "PCem (short for PC Emulator) is a hypervisor and IBM PC emulator for Windows and Linux that specializes in running old operating systems and software that are designed for IBM PC compatibles. Originally developed as an IBM PC XT emulator, it later emulates other IBM PC compatible computers as well."
+msgstr ""
+
 msgctxt "#30000"
 msgid "Settings"
 msgstr ""
