@@ -20,6 +20,7 @@
 		<platform>@PLATFORM@</platform>
 		<source>https://github.com/kodi-game/game.libretro.pcem</source>
 		<summary lang="en_GB">PC (PCem)</summary>
+		<summary lang="es_ES">PC (PCem)</summary>
 		<description lang="da_DK">PCem (forkortelse for PC Emulator) er en hypervisor og IBM PC-emulator, der er specialiseret i at køre gamle operativsystemer og software.[CR][CR]Oprindeligt udviklet som en IBM PC XT-emulator, emulerer den senere også andre IBM PC-kompatible computere.</description>
 		<description lang="de_DE">PCem (kurz für PC Emulator) ist ein Hypervisor und IBM-PC-Emulator, der auf die Ausführung alter Betriebssysteme und Software spezialisiert ist.[CR][CR]Ursprünglich als Emulator für IBM PC XT, emuliert er später auch andere IBM-PC-kompatible Computer.</description>
 		<description lang="en_GB">PCem (short for PC Emulator) is a hypervisor and IBM PC emulator that specializes in running old operating systems and software.[CR][CR]Originally developed as an IBM PC XT emulator, it later emulates other IBM PC compatible computers as well.</description>
