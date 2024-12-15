@@ -25,10 +25,6 @@ msgctxt "Addon Description"
 msgid "PCem (short for PC Emulator) is a hypervisor and IBM PC emulator that specializes in running old operating systems and software.[CR][CR]Originally developed as an IBM PC XT emulator, it later emulates other IBM PC compatible computers as well."
 msgstr "PCem (lyhenne sanoista PC Emulator) on hypervisor ja IBM PC -emulaattori, joka on erikoistunut vanhojen käyttöjärjestelmien ja ohjelmistojen suoritukseen.[CR][CR]Alunperin kehitetty IBM PC XT -emulaattoriksi, mutta emuloi nykyisin myös muita IBM PC -tietokoneita."
 
-msgctxt "#30000"
-msgid "Settings"
-msgstr "Asetukset"
-
 msgctxt "#30001"
 msgid "CPU Core"
 msgstr "Prosessoriydin"
@@ -76,3 +72,7 @@ msgstr "GameBlaster -äänikortti (uudelleenkäynnistys)"
 msgctxt "#30012"
 msgid "3Dfx Voodoo add-on card (restart)"
 msgstr "3Dfx Voodoo -lisäkortti (uudelleenkäynnistys)"
+
+#~ msgctxt "#30000"
+#~ msgid "Settings"
+#~ msgstr "Asetukset"

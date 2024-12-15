@@ -25,10 +25,6 @@ msgctxt "Addon Description"
 msgid "PCem (short for PC Emulator) is a hypervisor and IBM PC emulator that specializes in running old operating systems and software.[CR][CR]Originally developed as an IBM PC XT emulator, it later emulates other IBM PC compatible computers as well."
 msgstr ""
 
-msgctxt "#30000"
-msgid "Settings"
-msgstr "Inställningar"
-
 msgctxt "#30001"
 msgid "CPU Core"
 msgstr ""
@@ -76,3 +72,7 @@ msgstr ""
 msgctxt "#30012"
 msgid "3Dfx Voodoo add-on card (restart)"
 msgstr ""
+
+#~ msgctxt "#30000"
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
