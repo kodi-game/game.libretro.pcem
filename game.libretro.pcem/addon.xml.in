@@ -22,12 +22,14 @@
 		<summary lang="da_DK">PC (PCem)</summary>
 		<summary lang="en_GB">PC (PCem)</summary>
 		<summary lang="es_ES">PC (PCem)</summary>
+		<summary lang="sv_SE">PC (PCem)</summary>
 		<summary lang="zh_CN">PC (PCem)</summary>
 		<description lang="da_DK">PCem (forkortelse for PC Emulator) er en hypervisor og IBM PC-emulator, der er specialiseret i at køre gamle operativsystemer og software.[CR][CR]Oprindeligt udviklet som en IBM PC XT-emulator, emulerer den senere også andre IBM PC-kompatible computere.</description>
 		<description lang="de_DE">PCem (kurz für PC Emulator) ist ein Hypervisor und IBM-PC-Emulator, der auf die Ausführung alter Betriebssysteme und Software spezialisiert ist.[CR][CR]Ursprünglich als Emulator für IBM PC XT, emuliert er später auch andere IBM-PC-kompatible Computer.</description>
 		<description lang="en_GB">PCem (short for PC Emulator) is a hypervisor and IBM PC emulator that specializes in running old operating systems and software.[CR][CR]Originally developed as an IBM PC XT emulator, it later emulates other IBM PC compatible computers as well.</description>
 		<description lang="es_ES">PCem (abreviatura de PC Emulator) es un hipervisor y emulador de IBM PC especializado en la ejecución de sistemas operativos y software antiguos[CR][CR]Desarrollado originalmente como emulador de IBM PC XT, posteriormente emuló también otros ordenadores compatibles con IBM PC.</description>
 		<description lang="fi_FI">PCem (lyhenne sanoista PC Emulator) on hypervisor ja IBM PC -emulaattori, joka on erikoistunut vanhojen käyttöjärjestelmien ja ohjelmistojen suoritukseen.[CR][CR]Alunperin kehitetty IBM PC XT -emulaattoriksi, mutta emuloi nykyisin myös muita IBM PC -tietokoneita.</description>
+		<description lang="sv_SE">PCem (förkortning för PC Emulator) är en hypervisor och IBM PC-emulator som är specialiserad på att köra gamla operativsystem och programvaror.[CR][CR]Den utvecklades ursprungligen som en IBM PC XT-emulator, men emulerar senare även andra IBM PC-kompatibla datorer.</description>
 		<description lang="zh_CN">PCem（PC Emulator 的缩写）是一个管理程序和 IBM PC 模拟器，专门运行旧的操作系统和软件。[CR][CR]最初是作为 IBM PC XT 仿真器开发的，后来它还模拟了其他与 IBM PC 兼容的计算机。</description>
 	</extension>
 </addon>
