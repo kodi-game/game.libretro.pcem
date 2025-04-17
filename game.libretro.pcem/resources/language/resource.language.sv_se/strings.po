@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: game.libretro.pcem\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: 2017-02-04 09:56i\n"
-"PO-Revision-Date: 2025-04-11 09:05+0000\n"
+"PO-Revision-Date: 2025-04-17 04:26+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://kodi.weblate.cloud/projects/kodi-add-ons-game/game-libretro-pcem/sv_se/>\n"
 "Language: sv_se\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11\n"
 
 msgctxt "Addon Summary"
 msgid "PC (PCem)"
@@ -31,47 +31,52 @@ msgstr "CPU-kärna"
 
 msgctxt "#30002"
 msgid "Model (restart)"
-msgstr ""
+msgstr "Modell (omstart)"
 
 msgctxt "#30003"
 msgid "Graphics card (restart)"
-msgstr ""
+msgstr "Grafikkort (omstart)"
 
 msgctxt "#30004"
 msgid "Sound card (restart)"
-msgstr ""
+msgstr "Ljudkort (omstart)"
 
+#, fuzzy
 msgctxt "#30005"
 msgid "Video timing speed"
-msgstr ""
+msgstr "Hastighet för videotidtagning"
 
 msgctxt "#30006"
 msgid "Enable overscan"
-msgstr ""
+msgstr "Aktivera överskanning"
 
+#, fuzzy
 msgctxt "#30007"
 msgid "Enable flash"
-msgstr ""
+msgstr "Aktivera blixt"
 
+#, fuzzy
 msgctxt "#30008"
 msgid "CPU Floating Point Unit support (restart)"
-msgstr ""
+msgstr "Stöd för CPU Floating Point Unit (omstart)"
 
 msgctxt "#30009"
 msgid "Gravis UltraSound audiocard (restart)"
-msgstr ""
+msgstr "Gravis UltraSound-ljudkort (omstart)"
 
+#, fuzzy
 msgctxt "#30010"
 msgid "SSI 2001 add-on audiocard (restart)"
-msgstr ""
+msgstr "SSI 2001 tilläggsaudiokort (omstart)"
 
+#, fuzzy
 msgctxt "#30011"
 msgid "GameBlaster audiocard (restart)"
-msgstr ""
+msgstr "GameBlaster ljudkort (omstart)"
 
 msgctxt "#30012"
 msgid "3Dfx Voodoo add-on card (restart)"
-msgstr ""
+msgstr "3Dfx Voodoo tilläggskort (omstart)"
 
 #~ msgctxt "#30000"
 #~ msgid "Settings"
