@@ -1,0 +1,132 @@
+From bd9071ce9957d018c963c3302ce38d6441416867 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Mon, 24 Aug 2026 21:20:31 -0700
+Subject: [PATCH] libretro: support interpreter-only non-x86 builds
+
+---
+ src/386_dynarec.c     |  9 +++++++++
+ src/Makefile.common   | 21 +++++++++++++++------
+ src/Makefile.libretro |  1 +
+ src/codegen.h         |  2 +-
+ src/codegen_none.c    | 18 ++++++++++++++++++
+ 5 files changed, 44 insertions(+), 7 deletions(-)
+ create mode 100644 src/codegen_none.c
+
+diff --git a/src/386_dynarec.c b/src/386_dynarec.c
+index 5b0729b..f9924db 100644
+--- a/src/386_dynarec.c
++++ b/src/386_dynarec.c
+@@ -1194,6 +1194,14 @@ int dontprint=0;
+ #include "386_ops.h"
+ 
+ 
++#ifdef NO_DYNAREC
++void exec386(int cycs);
++
++void exec386_dynarec(int cycs)
++{
++        exec386(cycs);
++}
++#else
+ #define CACHE_ON() (!(cr0 & (1 << 30)) /*&& (cr0 & 1)*/ && !(flags & T_FLAG))
+ //#define CACHE_ON() 0
+ 
+@@ -1534,3 +1542,4 @@ inrecomp=0;
+                 cycles_main -= (cycles_start - cycles);
+         }
+ }
++#endif
+diff --git a/src/Makefile.common b/src/Makefile.common
+index d964ca8..329e5c8 100644
+--- a/src/Makefile.common
++++ b/src/Makefile.common
+@@ -32,10 +32,6 @@ SOURCES_C := $(CORE_DIR)/libretro.c \
+ 				 $(CORE_DIR)/cdrom-ioctl-linux.c \
+ 				 $(CORE_DIR)/cdrom-iso.c \
+ 				 $(CORE_DIR)/cdrom-null.c \
+-			    $(CORE_DIR)/codegen.c \
+-				 $(CORE_DIR)/codegen_ops.c \
+-				 $(CORE_DIR)/codegen_timing_486.c \
+-				 $(CORE_DIR)/codegen_timing_pentium.c \
+ 				 $(CORE_DIR)/compaq.c \
+ 				 $(CORE_DIR)/config.c \
+ 				 $(CORE_DIR)/cpu.c \
+@@ -168,11 +164,24 @@ SOURCES_C += $(CORE_DIR)/thread-pthread.c
+ 
+ 
+ ifeq ($(WITH_DYNAREC), arm)
++	SOURCES_C += $(CORE_DIR)/codegen_none.c
++	COMMONFLAGS += -DNO_DYNAREC
+ 	#COMMONFLAGS += -DC_DYNREC -DC_TARGETCPU="ARMV7LE"
+ else ifeq ($(WITH_DYNAREC), x86_64)
+-	SOURCES_C += $(CORE_DIR)/codegen_x86-64.c
++	SOURCES_C += $(CORE_DIR)/codegen.c \
++				 $(CORE_DIR)/codegen_ops.c \
++				 $(CORE_DIR)/codegen_timing_486.c \
++				 $(CORE_DIR)/codegen_timing_pentium.c \
++				 $(CORE_DIR)/codegen_x86-64.c
+ 	#COMMONFLAGS += -DC_DYNREC -DC_TARGETCPU="X86_64" -DC_HAVE_MPROTECT
+ else ifeq ($(WITH_DYNAREC), x86)
+-	SOURCES_C += $(CORE_DIR)/codegen_x86.c
++	SOURCES_C += $(CORE_DIR)/codegen.c \
++				 $(CORE_DIR)/codegen_ops.c \
++				 $(CORE_DIR)/codegen_timing_486.c \
++				 $(CORE_DIR)/codegen_timing_pentium.c \
++				 $(CORE_DIR)/codegen_x86.c
+ 	#COMMONFLAGS += -DC_DYNREC -DC_TARGETCPU="X86"
++else
++	SOURCES_C += $(CORE_DIR)/codegen_none.c
++	COMMONFLAGS += -DNO_DYNAREC
+ endif
+diff --git a/src/Makefile.libretro b/src/Makefile.libretro
+index 317e6df..543ac69 100644
+--- a/src/Makefile.libretro
++++ b/src/Makefile.libretro
+@@ -179,6 +179,7 @@ OBJECTS  = $(SOURCES_CXX:.cc=.o) $(SOURCES_C:.c=.o)
+ CFLAGS += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
+ CXXFLAGS += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
+ CFLAGS   += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
++CFLAGS   += -fcommon
+ LDFLAGS  += -lm -lpthread $(fpic)
+ 
+ ifeq ($(platform), theos_ios)
+diff --git a/src/codegen.h b/src/codegen.h
+index 25b8d97..659142f 100644
+--- a/src/codegen.h
++++ b/src/codegen.h
+@@ -4,7 +4,7 @@
+ #include "codegen_x86-64.h"
+ #elif defined i386 || defined __i386 || defined __i386__ || defined _X86_ || defined WIN32 || defined _WIN32 || defined _WIN32
+ #include "codegen_x86.h"
+-#else
++#elif !defined(NO_DYNAREC)
+ #error Dynamic recompiler not implemented on your platform
+ #endif
+ 
+diff --git a/src/codegen_none.c b/src/codegen_none.c
+new file mode 100644
+index 0000000..bc36d50
+--- /dev/null
++++ b/src/codegen_none.c
+@@ -0,0 +1,18 @@
++#include "ibm.h"
++#include "x86_ops.h"
++#include "codegen.h"
++
++uint32_t recomp_page = -1;
++int codegen_flags_changed;
++int cpu_recomp_flushes, cpu_recomp_flushes_latched;
++int cpu_recomp_evicted, cpu_recomp_evicted_latched;
++int cpu_recomp_reuse, cpu_recomp_reuse_latched;
++int cpu_recomp_removed, cpu_recomp_removed_latched;
++
++codegen_timing_t codegen_timing_pentium;
++codegen_timing_t codegen_timing_486;
++
++void codegen_init(void) {}
++void codegen_reset(void) {}
++void codegen_flush(void) {}
++void codegen_timing_set(codegen_timing_t *timing) {}
+-- 
+2.43.0
+
