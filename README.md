@@ -12,11 +12,11 @@ GPLv2
 
 ### Icon
 
-Help make me an icon!
+![PC (PCem) icon](game.libretro.pcem/resources/icon.png)
 
 ### Fanart
 
-Help make me fanart!
+![PC (PCem) fanart](game.libretro.pcem/resources/fanart.jpg)
 
 ### Screenshots
 

@@ -13,12 +13,17 @@
 		<extensions></extensions>
 		<supports_vfs>true</supports_vfs>
 		<supports_standalone>true</supports_standalone>
+		<supports_disc_control>false</supports_disc_control>
 		<requires_opengl>false</requires_opengl>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<license>GPLv2</license>
 		<platform>@PLATFORM@</platform>
 		<source>https://github.com/kodi-game/game.libretro.pcem</source>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+		</assets>
 		<summary lang="cs_CZ">PC (PCem)</summary>
 		<summary lang="da_DK">PC (PCem)</summary>
 		<summary lang="en_GB">PC (PCem)</summary>
